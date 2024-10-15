@@ -5,7 +5,7 @@ import useCart from '../hooks/useCart'
 
 export default function Cart(){
     const cartCheckboxId = useId()
-    const {cart, removeFromCart, addCant, subtractCant} = useCart()
+    const {cart, removeFromCart, addToCart, substractCant} = useCart()
 
 
     return(
@@ -17,21 +17,14 @@ export default function Cart(){
 
         <aside className='cart'>
             <ul>
-                {/*
-                <li className='prods'>
-                    <img src={imgBailongo} alt="" />
-                    <RemoveFromCartIcon />
-                </li>
-                */}
-
                 {cart.map(el=>(
                     <li key={el.id} className='prods'>
-                        <img src={el.img} alt="" />
+                        <img src={el.thumbnail} alt="" />
                         
                         <span className='cant' >
-                            <span onClick={() => subtractCant(el.id)}><RemoveIcon /></span> 
+                            <span onClick={() => substractCant(el.id)}><RemoveIcon /></span> 
                             {el.cant}
-                            <span onClick={() => addCant(el.id)}><AddIcon /></span>
+                            <span onClick={() => addToCart(el)}><AddIcon /></span>
                         </span>
 
                         <span onClick={() => removeFromCart(el.id)}>
